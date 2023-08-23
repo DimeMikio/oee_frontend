@@ -1,0 +1,106 @@
+.header-dashboard {
+  font-family: 'Roboto-regular';
+  color: var(--blue-dark-1);
+  font-size: 25px;
+  background-color: var(--gray-light-1);
+  padding: 10px;
+}
+
+.body-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+}
+
+.oee-single {
+  margin-top: 15px;
+
+}
+
+.equipment-name {
+  padding-left: 20px;
+  font-family: 'Roboto-regular';
+  color: rgb(120,120,120);
+}
+
+.oee-single-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.gauge-background {
+  width: 120px;
+  padding: 2px;
+  border-radius: 150px;
+  background-color: var(--gray-light-2);
+  z-index: 1;
+}
+
+.infos-oee-background {
+  border-radius: 0px 15px 15px 0px;
+  position: relative;
+  width: 180px;
+  margin-left: -70px;
+  height: 110px;
+  margin-top: 12px;
+  padding: 5px;
+}
+
+.color-bkg-green {
+  background-color: rgb(3, 121, 3);
+}
+
+.color-bkg-blue {
+  background-color: rgb(31, 0, 172);
+}
+
+.color-bkg-gray {
+  background-color: rgb(92, 92, 92);
+}
+
+.color-bkg-red {
+  background-color: rgb(189, 0, 0);
+}
+
+.infos-oee {
+  font-size: 11px;
+  margin-left: 80px;
+  height: 100px;
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 0px 10px 10px 0px;
+  padding: 5px;
+}
+
+.equipment-status {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 5px 0px;
+  border-bottom: 1px solid rgb(200,200,200);
+}
+
+.equipment-operator {
+  text-align: center;
+  padding: 2px 0px;
+}
+
+.equipment-product {
+  padding: 2px;
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgb(200,200,200);
+  max-height: 50px;
+  overflow-y: auto;
+}
+
+.equipment-product::-webkit-scrollbar {
+  width: 3px;
+}
+
+.equipment-product::-webkit-scrollbar-thumb {
+  background-color: rgb(120,120,120);
+}
+
+.equipment-product p {
+  padding: 2px 0px;
+}
