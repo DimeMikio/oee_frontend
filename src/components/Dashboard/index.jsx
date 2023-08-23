@@ -16,7 +16,7 @@ export const Dashboard = () => {
   return (
     <div className='dashboard-container'>
       <div className='header-dashboard'>
-        <p>Dashboard - O.E.equip_name</p>
+        <p>Dashboard - O.E.E</p>
       </div>
 
       <div className='body-dashboard'>
