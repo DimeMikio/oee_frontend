@@ -19,14 +19,14 @@ function Home() {
     <div className="app">
       <BrowserRouter>
         <Menu />
-        <div className='header'><Header /></div>
+        {/* <div className='header'><Header /></div>
         <div className='main'>
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='/config' element={<Config />} />
             <Route path='/register' element={<Register />} />
           </Routes>
-        </div>
+        </div> */}
       </BrowserRouter>
     </div>
   );
