@@ -2,12 +2,12 @@ import './style.css';
 
 import { useState } from 'react';
 
-import { User } from '../User';
-import { Operator } from '../Operator';
-import { Equipment } from '../Equipment';
-import { Product } from '../Product';
-import { Client } from '../Client';
-import { Stop } from '../Stop';
+import { User } from '../Register/User';
+import { Operator } from '../Register/Operator';
+import { Equipment } from '../Register/Equipment';
+import { Product } from '../Register/Product';
+import { Client } from '../Register/Client';
+import { Stop } from '../Register/Stop';
 
 export const Register = () => {
   const [itemSelect, setItemSelect] = useState(1);

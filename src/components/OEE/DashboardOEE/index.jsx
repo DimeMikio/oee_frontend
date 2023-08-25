@@ -3,7 +3,7 @@ import './style.css';
 import React from 'react';
 import { GaugeOEE } from '../GaugeOEE';
 
-export const Dashboard = () => {
+export const DashboardOEE = () => {
   const oeeValues = [
     {id:1, equip_name: 'HMC 01', equip_desc: 'Heller', oee:90, status: 'Produzindo', operator: 'Dime M', products:[[1, '000.000.000'], [2, '111.222.333']]},
     {id:2, equip_name: 'HMC 02', equip_desc: 'Mori Seiki', oee:78, status: 'Manutenção', operator: 'João', products:[[]]},
