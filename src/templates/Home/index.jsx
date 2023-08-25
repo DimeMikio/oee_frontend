@@ -6,7 +6,7 @@ import './css/list/style.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { Header } from '../../components/Header';
+import { Header } from '../Header';
 import { Menu } from '../../components/Menu';
 import { Dashboard } from '../../components/Dashboard';
 import { Config } from '../../components/Config';
