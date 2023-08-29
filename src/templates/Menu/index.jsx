@@ -6,7 +6,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export const Menu = () => {
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
   const [itenSelect, setItenSelect] = useState(sessionStorage.getItem('itemMenu') ? parseInt(sessionStorage.getItem('itemMenu')) : 1);
   const menuSide = useRef(null);
   const domPhotoUser = useRef(null);
@@ -22,7 +22,8 @@ export const Menu = () => {
     }
     
     showHideMenu().then((res) => {
-      if(!res) {
+      console.log(res);
+      if(res === false) {
         menuSide.current.className = 'container-menu hide-menu';
         domPhotoUser.current.className = 'photo-user-menu photo-user-small';
       } else {
@@ -38,7 +39,7 @@ export const Menu = () => {
   }
 
   return (
-    <div className='container-menu' ref={menuSide}>
+    <div className='container-menu hide-menu' ref={menuSide}>
       
       <div className='container-icon-menu'>
         <div className='icon-menu' onClick={handleShowMenu}>
@@ -47,7 +48,7 @@ export const Menu = () => {
       </div>
 
       <div className='container-infoUser-menu'>
-        <span className='photo-user-menu' ref={domPhotoUser}></span>
+        <span className='photo-user-menu photo-user-small' ref={domPhotoUser}></span>
 
         <div className='user-menu'>
           <span className='name-user-menu'>Brad Frost Hosokawa</span>
