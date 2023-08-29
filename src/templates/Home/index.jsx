@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Header } from '../Header';
 import { Menu } from '../Menu';
-import { DashboardOEE } from '../../components/OEE/DashboardOEE';
+import { DashboardOEE } from '../../components/OEE';
 import { Config } from '../../components/Config';
 import { Register } from '../../components/Register';
 

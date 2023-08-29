@@ -1,7 +1,10 @@
 import './style.css';
 
 import React from 'react';
-import { GaugeOEE } from '../GaugeOEE';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { GaugeOEE } from './GaugeOEE';
 
 export const DashboardOEE = () => {
   const oeeValues = [
