@@ -22,7 +22,6 @@ export const Menu = () => {
     }
     
     showHideMenu().then((res) => {
-      console.log(res);
       if(res === false) {
         menuSide.current.className = 'container-menu hide-menu';
         domPhotoUser.current.className = 'photo-user-menu photo-user-small';

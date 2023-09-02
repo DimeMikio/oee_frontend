@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './templates/Home/css/global/style.css';
+import './templates/Global/global/style.css';
 import reportWebVitals from './reportWebVitals';
 import Home from './templates/Home';
 

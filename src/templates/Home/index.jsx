@@ -1,7 +1,7 @@
 import './style.css';
-import './css/button/style.css';
-import './css/form/style.css';
-import './css/list/style.css';
+import '../Global/button/style.css';
+import '../Global/form/style.css';
+import '../Global/list/style.css';
 
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';

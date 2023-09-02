@@ -5,12 +5,12 @@ import { GaugeOEE } from './GaugeOEE';
 
 export const DashboardOEE = () => {
   const oeeValues = [
-    {id:1, equip_name: 'HMC 01', equip_desc: 'Heller', oee:90, status: 'Produzindo', operator: 'Dime M', products:[[1, '000.000.000'], [2, '111.222.333']]},
-    {id:2, equip_name: 'HMC 02', equip_desc: 'Mori Seiki', oee:78, status: 'Manutenção', operator: 'João', products:[[]]},
-    {id:3, equip_name: 'HMC 03', equip_desc: 'Grob 550', oee:85, status: 'Produzindo', operator: 'Maria', products:[[3, '000.000.000'], [4, '111.222.333'], [5, '555.555.555']]},
-    {id:4, equip_name: 'TCNC 01', equip_desc: 'Index 800', oee:92, status: 'Parado', operator: 'Joaquin', products:[[6, '000.000.000']]},
-    {id:5, equip_name: 'TCNC 02', equip_desc: 'Index 600', oee:62, status: 'Produzindo', operator: 'Marcos', products:[[7, '000.000.000']]},
-    {id:6, equip_name: 'TCNC 03', equip_desc: 'SKT 250LC', oee:75, status: 'Produzindo', operator: 'Felipe', products:[[8, '000.000.000']]},
+    {id:1, equip_name: 'HMC 01', equip_desc: 'Heller', oee:90, status: 'Produzindo', operator: 'Dime M', products: [{id:1, part_number:'000.000.000'}, {id:2, part_number:'111.111.111'}]},
+    {id:2, equip_name: 'HMC 02', equip_desc: 'Mori Seiki', oee:78, status: 'Manutenção', operator: 'João', products: []},
+    {id:3, equip_name: 'HMC 03', equip_desc: 'Grob 550', oee:85, status: 'Produzindo', operator: 'Maria', products: [{id:1, part_number:'000.000.000'}, {id:2, part_number:'111.111.111'}]},
+    {id:4, equip_name: 'TCNC 01', equip_desc: 'Index 800', oee:92, status: 'Parado', operator: 'Joaquin', products: [{id:1, part_number:'000.000.000'}, {id:2, part_number:'111.111.111'}]},
+    {id:5, equip_name: 'TCNC 02', equip_desc: 'Index 600', oee:62, status: 'Produzindo', operator: 'Marcos', products: [{id:1, part_number:'000.000.000'}, {id:2, part_number:'111.111.111'}]},
+    {id:6, equip_name: 'TCNC 03', equip_desc: 'SKT 250LC', oee:75, status: 'Produzindo', operator: 'Felipe', products: [{id:1, part_number:'000.000.000'}, {id:2, part_number:'111.111.111'}]},
   ]
 
   return (
@@ -37,7 +37,7 @@ export const DashboardOEE = () => {
             }
 
             return (
-              <div key={oeeValue.id} className='oee-single'>
+              <div key={oeeValue.id} className='oee-single' onClick={}>
                 <div className='equipment-name'>
                   <h2>{oeeValue.equip_name}</h2>
                   <p>{oeeValue.equip_desc}</p>
@@ -55,7 +55,7 @@ export const DashboardOEE = () => {
                       <div className='equipment-product'>
                         {oeeValue.products.map((product) => {
                           return (
-                            <p key={product[0]}>{product[1]}</p>
+                            <p key={product.id}>{product.part_number}</p>
                           )
                         })}
                       </div>

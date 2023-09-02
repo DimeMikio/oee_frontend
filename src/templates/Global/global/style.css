@@ -26,15 +26,15 @@ body {
   --font-gray-3: rgb(133, 133, 133);
   --yellow-1: rgb(255,232,123);
   --blue-1: rgb(94,173,224);
-  --blue-2: rgb(151,182,202);
+  --blue-2: rgb(99, 137, 161);
 }
 
 /* Fonts Default */
 @font-face {
   font-family: 'Roboto-regular';
-  src: url('../../../../assets/fonts/RobotoCondensed-Regular.ttf');
+  src: url('../../../assets/fonts/RobotoCondensed-Regular.ttf');
 }
 @font-face {
   font-family: 'Roboto-bold';
-  src: url('../../../../assets/fonts/RobotoCondensed-Bold.ttf');
+  src: url('../../../assets/fonts/RobotoCondensed-Bold.ttf');
 }

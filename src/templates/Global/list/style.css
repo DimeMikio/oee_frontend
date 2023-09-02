@@ -18,7 +18,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 110px;
-  font-size: 22px;
+  font-size: 20px;
   padding-left: 10px;
   color: white;
 }
@@ -34,6 +34,7 @@
   background-color: white;
   padding: 5px 10px;
   border-radius: 5px;
+  min-width: 180px;
 }
 
 .search-input {
