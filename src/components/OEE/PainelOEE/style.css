@@ -2,9 +2,11 @@
   background-color: rgba(0,0,0,0.9);
   position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
+  height: 100%;
+  min-height: 620px;
+  width: 100%;
+  min-width: 400px;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -13,5 +15,25 @@
 
 .painel-oee-container {
   background-color: white;
-  
+  padding: 20px 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(255,255,255,0.5);
+}
+
+.oee-header-container {
+  margin-bottom: 10px;
+  color: rgb(70,70,70);
+}
+
+.oee-index-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.oee-index-single {
+  border: 1px solid red;
+}
+
+.oee-index-sub {
+  font-size: 10px;
 }
