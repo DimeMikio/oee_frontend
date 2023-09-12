@@ -1,9 +1,12 @@
 import './style.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { GaugeOEE } from './GaugeOEE';
+import { PainelOEE } from './PainelOEE';
 
 export const DashboardOEE = () => {
+  const [showPainelOEE, setShowPainelOEE] = useState(false);
+
   const oeeValues = [
     {id:1, equip_name: 'HMC 01', equip_desc: 'Heller', oee:90, status: 'Produzindo', operator: 'Dime M', products: [{id:1, part_number:'000.000.000'}, {id:2, part_number:'111.111.111'}]},
     {id:2, equip_name: 'HMC 02', equip_desc: 'Mori Seiki', oee:78, status: 'Manutenção', operator: 'João', products: []},
@@ -37,7 +40,7 @@ export const DashboardOEE = () => {
             }
 
             return (
-              <div key={oeeValue.id} className='oee-single' onClick={}>
+              <div key={oeeValue.id} className='oee-single' onClick={() => setShowPainelOEE(true)}>
                 <div className='equipment-name'>
                   <h2>{oeeValue.equip_name}</h2>
                   <p>{oeeValue.equip_desc}</p>
@@ -66,6 +69,8 @@ export const DashboardOEE = () => {
             )
           })}
       </div>
+
+      {showPainelOEE && <PainelOEE />}
     </div>
   )
 }
