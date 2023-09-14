@@ -26,14 +26,31 @@
 }
 
 .oee-index-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  margin-bottom: 10px;
 }
 
 .oee-index-single {
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  border: 1px solid rgb(163, 163, 163);
+}
+
+.oee-green {
+  background-color: rgb(132, 247, 132);
+}
+
+.oee-red {
+  background-color: rgb(247, 132, 132);
 }
 
 .oee-index-sub {
   font-size: 10px;
+}
+
+.oee-goal {
+  font-size: 14px;
 }

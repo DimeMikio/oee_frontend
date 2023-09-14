@@ -13,31 +13,39 @@ export const PainelOEE = () => {
         </div>
 
         <div className='oee-index-container'>
-          <div className='oee-index-single'>
+          <div className='oee-index-single oee-green'>
             <span className='oee-index-sub'>Disponibilidade</span>
             <span>80%</span>
           </div>
-          <div className='oee-index-single'>
+          <div className='oee-index-single oee-red'>
             <span className='oee-index-sub'>Eficiência</span>
-            <span>80%</span>
+            <span>70%</span>
           </div>
-          <div className='oee-index-single'>
+          <div className='oee-index-single oee-green'>
             <span className='oee-index-sub'>Qualidade</span>
-            <span>80%</span>
+            <span>100%</span>
           </div>
-          <div className='oee-index-single'>
+          <div className='oee-index-single oee-green'>
             <span className='oee-index-sub'>OEE</span>
-            <span>80%</span>
+            <span>85%</span>
           </div>
         </div>
 
         <div className='oee-infos-container'>
-          <div>Operador</div>
-          <div>Turno</div>
-
           <div>
-            <div><span>Meta Produção</span><span>110</span></div>
-            <div><span>Real Produção</span><span>98</span></div>
+            <span>Dime M</span>
+            <span>1º Turno</span>
+          </div>
+
+          <div className='oee-goal'>
+            <div>
+              <span>Meta Produção</span>
+              <span>110</span>
+            </div>
+            <div>
+              <span>Real Produção</span>
+              <span>98</span>
+            </div>
           </div>
         </div>
 
