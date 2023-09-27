@@ -1,71 +1,298 @@
 import './style.css';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import Chart from 'chart.js/auto';
 
 export const PainelOEE = () => {
+  let chartOEE;
+  let chartAvail;
+  let chartEff;
+  let chartQual;
+
+  const IndexOEE = ({ percent }) => {
+    const canvasRef = useRef(null);
+
+    useEffect(() => {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+
+      chartOEE && chartOEE.destroy();
+      
+      chartOEE = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          datasets: [
+            {
+              data: [percent, 100 - percent],
+              backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
+              borderWidth: 0,
+              hoverOffset: 1,
+            },
+          ],
+        },
+        options: {
+          cutout: 20,
+          rotation: -125,
+          circumference: 250,
+          tooltips: { enabled: true },
+          hover: { mode: null },
+        }
+      });
+
+    }, [percent]);
+
+
+    return <canvas ref={canvasRef} />;
+  }
+
+  const IndexAvail = ({ percent }) => {
+    const canvasRef = useRef(null);
+
+    useEffect(() => {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+
+      chartAvail && chartAvail.destroy();
+      
+      chartAvail = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          datasets: [
+            {
+              data: [percent, 100 - percent],
+              backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
+              borderWidth: 0,
+              hoverOffset: 1,
+            },
+          ],
+        },
+        options: {
+          cutout: 12,
+          rotation: -135,
+          circumference: 270,
+          tooltips: { enabled: true },
+          hover: { mode: null },
+        }
+      });
+
+    }, [percent]);
+
+
+    return <canvas ref={canvasRef} />;
+  }
+
+  const IndexEff = ({ percent }) => {
+    const canvasRef = useRef(null);
+
+    const options = {
+      cutout: 12,
+        rotation: -135,
+        circumference: 270,
+        tooltips: { enabled: true },
+        hover: { mode: null },
+    };
+
+    const data = {
+      datasets: [
+        {
+          data: [percent, 100 - percent],
+          backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
+          borderWidth: 0,
+          hoverOffset: 1,
+        },
+      ],
+    }
+
+    useEffect(() => {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+
+      chartEff && chartEff.destroy();
+      
+      chartEff = new Chart(ctx, {
+        type: 'doughnut',
+        data,
+        options,
+      });
+
+    }, [percent]);
+
+
+    return <canvas ref={canvasRef} />;
+  }
+
+  const IndexQual = ({ percent }) => {
+    const canvasRef = useRef(null);
+
+    const options = {
+      cutout: 12,
+        rotation: -135,
+        circumference: 270,
+        tooltips: { enabled: true },
+        hover: { mode: null },
+    };
+
+    const data = {
+      datasets: [
+        {
+          data: [percent, 100 - percent],
+          backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
+          borderWidth: 0,
+          hoverOffset: 1,
+        },
+      ],
+    }
+
+    useEffect(() => {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+
+      chartQual && chartQual.destroy();
+      
+      chartQual = new Chart(ctx, {
+        type: 'doughnut',
+        data,
+        options,
+      });
+
+    }, [percent]);
+
+
+    return <canvas ref={canvasRef} />;
+  }
+
   return (
     <div className='painel-oee'>
-      <div className='painel-oee-container'>
 
-        <div className='oee-header-container'>
-          <h1>HMC 01</h1>
-          <p>Heller</p>
-        </div>
+      <div className='painel-oee-bkg'>
+        <div className='painel-oee-container'>
 
-        <div className='oee-index-container'>
-          <div className='oee-index-single oee-green'>
-            <span className='oee-index-sub'>Disponibilidade</span>
-            <span>80%</span>
-          </div>
-          <div className='oee-index-single oee-red'>
-            <span className='oee-index-sub'>Eficiência</span>
-            <span>70%</span>
-          </div>
-          <div className='oee-index-single oee-green'>
-            <span className='oee-index-sub'>Qualidade</span>
-            <span>100%</span>
-          </div>
-          <div className='oee-index-single oee-green'>
-            <span className='oee-index-sub'>OEE</span>
-            <span>85%</span>
-          </div>
-        </div>
-
-        <div className='oee-infos-container'>
-          <div>
-            <span>Dime M</span>
-            <span>1º Turno</span>
+          <div className='oee-header-container'>
+            <h1>HMC 01</h1>
+            <p>Heller</p>
           </div>
 
-          <div className='oee-goal'>
-            <div>
-              <span>Meta Produção</span>
-              <span>110</span>
+          <div className='oee-index-container'>
+
+            <div className='oee-mainindex'>
+              <div className='oee-index-100'>
+                <IndexOEE percent={100} />
+              </div>
+              <div className='oee-index-text'>
+                <div>70,2%</div>
+                <div>OEE</div>
+              </div>
             </div>
-            <div>
-              <span>Real Produção</span>
-              <span>98</span>
-            </div>
-          </div>
-        </div>
 
-        <div className='oee-parts-container'>
-          <div>
-            <span>Peça1</span>
-            <span>Operação 10</span>
-            <span>Tempo Usinagem</span>
-            <span>Tempo Troca</span>
+            <div className='oee-subindex'>
+              <div className='oee-subindex-container'>
+                <div className='oee-index-60'>
+                  <IndexAvail percent={85} />
+                </div>
+                <div>85,0%</div>
+                <div>Disponibilidade</div>
+              </div>
+
+              <div className='oee-subindex-container'>
+                <div className='oee-index-60'>
+                  <IndexEff percent={75} />
+                </div>
+                <div>75,2%</div>
+                <div>Eficiência</div>
+              </div>
+
+              <div className='oee-subindex-container'>
+                  <div className='oee-index-60'>
+                    <IndexQual percent={100} />
+                  </div>
+                  <div>100%</div>
+                  <div>Qualidade</div>
+              </div>
+            </div>
+
           </div>
-          <div>
-            <span>Peça2</span>
-            <span>Operação 30</span>
-            <span>Tempo Usinagem</span>
-            <span>Tempo Troca</span>
+
+          <div className='oee-info-container'>
+
+            <div className='status-production'>
+              Produzindo
+            </div>
+
+            <div className='operator-id'>
+              <p>Operador: <span>Dime M</span></p>
+            </div>
+
+            <div className='list-product'>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>Op</th>
+                    <th>Meta</th>
+                    <th>Real</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>OK</td>
+                    <td>123.456.789</td>
+                    <td>Polia</td>
+                    <td>20</td>
+                    <td>15</td>
+                    <td>15</td>
+                  </tr>
+                  <tr>
+                    <td>OK</td>
+                    <td>123.456.789</td>
+                    <td>Polia</td>
+                    <td>20</td>
+                    <td>15</td>
+                    <td>15</td>
+                  </tr>
+                  <tr>
+                    <td>P</td>
+                    <td>123.456.789</td>
+                    <td>Polia</td>
+                    <td>20</td>
+                    <td>15</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>P</td>
+                    <td>123.456.789</td>
+                    <td>Polia</td>
+                    <td>20</td>
+                    <td>15</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>P</td>
+                    <td>123.456.789</td>
+                    <td>Polia</td>
+                    <td>20</td>
+                    <td>15</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>P</td>
+                    <td>123.456.789</td>
+                    <td>Polia</td>
+                    <td>20</td>
+                    <td>15</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
-        <div>Tempo Ciclo</div>
 
       </div>
     </div>
-  )
+  );
+
 }
