@@ -1,9 +1,9 @@
 import './style.css';
 
 import React, { useRef, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+/* import { Container } from 'react-bootstrap';
 import { Row, Col  } from 'react-bootstrap';
-
+ */
 import Chart from 'chart.js/auto';
 
 export const PainelOEE = ({setShowPainelOEE}) => {
@@ -87,25 +87,6 @@ export const PainelOEE = ({setShowPainelOEE}) => {
   const IndexEff = ({ percent }) => {
     const canvasRef = useRef(null);
 
-    const options = {
-      cutout: 12,
-        rotation: -135,
-        circumference: 270,
-        tooltips: { enabled: true },
-        hover: { mode: null },
-    };
-
-    const data = {
-      datasets: [
-        {
-          data: [percent, 100 - percent],
-          backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
-          borderWidth: 0,
-          hoverOffset: 1,
-        },
-      ],
-    }
-
     useEffect(() => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d');
@@ -114,8 +95,23 @@ export const PainelOEE = ({setShowPainelOEE}) => {
       
       chartEff = new Chart(ctx, {
         type: 'doughnut',
-        data,
-        options,
+        data: {
+          datasets: [
+            {
+              data: [percent, 100 - percent],
+              backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
+              borderWidth: 0,
+              hoverOffset: 1,
+            },
+          ],
+        },
+        options: {
+          cutout: 12,
+          rotation: -135,
+          circumference: 270,
+          tooltips: { enabled: true },
+          hover: { mode: null },
+        },
       });
 
     }, [percent]);
@@ -127,25 +123,6 @@ export const PainelOEE = ({setShowPainelOEE}) => {
   const IndexQual = ({ percent }) => {
     const canvasRef = useRef(null);
 
-    const options = {
-      cutout: 12,
-        rotation: -135,
-        circumference: 270,
-        tooltips: { enabled: true },
-        hover: { mode: null },
-    };
-
-    const data = {
-      datasets: [
-        {
-          data: [percent, 100 - percent],
-          backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
-          borderWidth: 0,
-          hoverOffset: 1,
-        },
-      ],
-    }
-
     useEffect(() => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d');
@@ -154,8 +131,23 @@ export const PainelOEE = ({setShowPainelOEE}) => {
       
       chartQual = new Chart(ctx, {
         type: 'doughnut',
-        data,
-        options,
+        data: {
+          datasets: [
+            {
+              data: [percent, 100 - percent],
+              backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
+              borderWidth: 0,
+              hoverOffset: 1,
+            },
+          ],
+        },
+        options: {
+          cutout: 12,
+          rotation: -135,
+          circumference: 270,
+          tooltips: { enabled: true },
+          hover: { mode: null },
+        },
       });
 
     }, [percent]);
