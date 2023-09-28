@@ -6,6 +6,7 @@ import { PainelOEE } from './PainelOEE';
 
 export const DashboardOEE = () => {
   const [showPainelOEE, setShowPainelOEE] = useState(false);
+  const [oeeSelected, setOeeSelected] = useState({ equip_name:'', equip })
 
   const oeeValues = [
     {id:1, equip_name: 'HMC 01', equip_desc: 'Heller', oee:90, status: 'Produzindo', operator: 'Dime M', products: [{id:1, part_number:'000.000.000'}, {id:2, part_number:'111.111.111'}]},
@@ -70,7 +71,7 @@ export const DashboardOEE = () => {
           })}
       </div>
 
-      {showPainelOEE && <PainelOEE />}
+      {showPainelOEE && <PainelOEE setShowPainelOEE={setShowPainelOEE}/>}
     </div>
   )
 }

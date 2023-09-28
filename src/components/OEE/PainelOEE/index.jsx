@@ -1,9 +1,12 @@
 import './style.css';
 
 import React, { useRef, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
+import { Row, Col  } from 'react-bootstrap';
+
 import Chart from 'chart.js/auto';
 
-export const PainelOEE = () => {
+export const PainelOEE = ({setShowPainelOEE}) => {
   let chartOEE;
   let chartAvail;
   let chartEff;
@@ -165,6 +168,7 @@ export const PainelOEE = () => {
     <div className='painel-oee'>
 
       <div className='painel-oee-bkg'>
+
         <div className='painel-oee-container'>
 
           <div className='oee-header-container'>
@@ -175,7 +179,7 @@ export const PainelOEE = () => {
           <div className='oee-index-container'>
 
             <div className='oee-mainindex'>
-              <div className='oee-index-100'>
+              <div className='oee-index-70'>
                 <IndexOEE percent={100} />
               </div>
               <div className='oee-index-text'>
@@ -186,7 +190,7 @@ export const PainelOEE = () => {
 
             <div className='oee-subindex'>
               <div className='oee-subindex-container'>
-                <div className='oee-index-60'>
+                <div className='oee-index-50'>
                   <IndexAvail percent={85} />
                 </div>
                 <div>85,0%</div>
@@ -194,7 +198,7 @@ export const PainelOEE = () => {
               </div>
 
               <div className='oee-subindex-container'>
-                <div className='oee-index-60'>
+                <div className='oee-index-50'>
                   <IndexEff percent={75} />
                 </div>
                 <div>75,2%</div>
@@ -202,7 +206,7 @@ export const PainelOEE = () => {
               </div>
 
               <div className='oee-subindex-container'>
-                  <div className='oee-index-60'>
+                  <div className='oee-index-50'>
                     <IndexQual percent={100} />
                   </div>
                   <div>100%</div>
@@ -236,17 +240,17 @@ export const PainelOEE = () => {
                 </thead>
 
                 <tbody>
-                  <tr>
+                  <tr style={{background: "rgb(82,184,72)"}}>
                     <td>OK</td>
-                    <td>123.456.789</td>
+                    <td>111.111.111</td>
                     <td>Polia</td>
                     <td>20</td>
                     <td>15</td>
                     <td>15</td>
                   </tr>
-                  <tr>
+                  <tr style={{background: "rgb(82,184,72)"}}>
                     <td>OK</td>
-                    <td>123.456.789</td>
+                    <td>222.222.222</td>
                     <td>Polia</td>
                     <td>20</td>
                     <td>15</td>
@@ -286,6 +290,10 @@ export const PainelOEE = () => {
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            <div className='oee-buttons'>
+              <button className='btn btn-gray' onClick={() => setShowPainelOEE(false)}>Fechar</button>
             </div>
 
           </div>
