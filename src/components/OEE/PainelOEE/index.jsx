@@ -1,12 +1,12 @@
 import './style.css';
 
 import React, { useRef, useEffect } from 'react';
-/* import { Container } from 'react-bootstrap';
-import { Row, Col  } from 'react-bootstrap';
- */
+
 import Chart from 'chart.js/auto';
 
-export const PainelOEE = ({setShowPainelOEE}) => {
+export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
+  const oee = oeeSelected.oeeValue;
+
   let chartOEE;
   let chartAvail;
   let chartEff;
@@ -164,18 +164,18 @@ export const PainelOEE = ({setShowPainelOEE}) => {
         <div className='painel-oee-container'>
 
           <div className='oee-header-container'>
-            <h1>HMC 01</h1>
-            <p>Heller</p>
+            <h1>{oee.equip_name}</h1>
+            <p>{oee.equip_desc}</p>
           </div>
 
           <div className='oee-index-container'>
 
             <div className='oee-mainindex'>
               <div className='oee-index-70'>
-                <IndexOEE percent={100} />
+                <IndexOEE percent={oee.oee} />
               </div>
               <div className='oee-index-text'>
-                <div>70,2%</div>
+                <div>{oee.oee}%</div>
                 <div>OEE</div>
               </div>
             </div>
@@ -183,25 +183,25 @@ export const PainelOEE = ({setShowPainelOEE}) => {
             <div className='oee-subindex'>
               <div className='oee-subindex-container'>
                 <div className='oee-index-50'>
-                  <IndexAvail percent={85} />
+                  <IndexAvail percent={oee.avail} />
                 </div>
-                <div>85,0%</div>
+                <div>{oee.avail}%</div>
                 <div>Disponibilidade</div>
               </div>
 
               <div className='oee-subindex-container'>
                 <div className='oee-index-50'>
-                  <IndexEff percent={75} />
+                  <IndexEff percent={oee.eff} />
                 </div>
-                <div>75,2%</div>
+                <div>{oee.eff}%</div>
                 <div>Eficiência</div>
               </div>
 
               <div className='oee-subindex-container'>
                   <div className='oee-index-50'>
-                    <IndexQual percent={100} />
+                    <IndexQual percent={oee.qual} />
                   </div>
-                  <div>100%</div>
+                  <div>{oee.qual}%</div>
                   <div>Qualidade</div>
               </div>
             </div>
@@ -211,11 +211,11 @@ export const PainelOEE = ({setShowPainelOEE}) => {
           <div className='oee-info-container'>
 
             <div className='status-production'>
-              Produzindo
+              {oee.status}
             </div>
 
             <div className='operator-id'>
-              <p>Operador: <span>Dime M</span></p>
+              <p>Operador: <span>{oee.operator}</span></p>
             </div>
 
             <div className='list-product'>
