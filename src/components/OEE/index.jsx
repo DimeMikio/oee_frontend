@@ -1,14 +1,14 @@
 import './style.css';
 
-import React, { useState } from 'react';
-import { GaugeOEE } from './GaugeOEE';
-import { PainelOEE } from './PainelOEE';
+import React from 'react';
+/* import { GaugeOEE } from './GaugeOEE';
+ *//* import { PainelOEE } from './PainelOEE'; */
 
 export const DashboardOEE = () => {
-  const [showPainelOEE, setShowPainelOEE] = useState(false);
-  const [oeeSelected, setOeeSelected] = useState({ equip_name: '', equip_desc: '', oee: null, avail: null, eff: null, qual: null, status: '', operator: '', products: [] })
-
-  const oeeValues = [
+/*   const [showPainelOEE, setShowPainelOEE] = useState(false);
+ *//*   const [oeeSelected, setOeeSelected] = useState({ equip_name: '', equip_desc: '', oee: null, avail: null, eff: null, qual: null, status: '', operator: '', products: [] })
+ */
+  /* const oeeValues = [
     {id:1, equip_name: 'HMC 01', equip_desc: 'Heller', oee:90, avail: 85, eff: 75.2, qual: 100, status: 'Produzindo', operator: 'Dime M', products: [{id:1, part_number:'000.000.000'}, {id:2, part_number:'111.111.111'}]},
     {id:2, equip_name: 'HMC 02', equip_desc: 'Mori Seiki', oee:58, avail: 62, eff: 75.2, qual: 100, status: 'Manutenção', operator: 'João', products: []},
     {id:3, equip_name: 'HMC 03', equip_desc: 'Grob 550', oee:85, avail: 85, eff: 75.2, qual: 100, status: 'Produzindo', operator: 'Maria', products: [{id:1, part_number:'000.000.000'}, {id:2, part_number:'111.111.111'}]},
@@ -20,7 +20,7 @@ export const DashboardOEE = () => {
   const handleSelectOee = (oeeValue) => {
     setOeeSelected({oeeValue});
     setShowPainelOEE(true);
-  }
+  } */
 
   return (
     <div className='dashboard-container'>
@@ -29,7 +29,7 @@ export const DashboardOEE = () => {
       </div>
 
       <div className='body-dashboard'>
-          {oeeValues.map((oeeValue) => {
+          {/* {oeeValues.map((oeeValue) => {
             var colorBkg;
             switch (oeeValue.status) {
               case 'Produzindo':
@@ -47,7 +47,7 @@ export const DashboardOEE = () => {
 
             return (
               <div key={oeeValue.id} className='oee-single' onClick={() => handleSelectOee(oeeValue)}>
-                {/* <div className='equipment-name'>
+                <div className='equipment-name'>
                   <h2>{oeeValue.equip_name}</h2>
                   <p>{oeeValue.equip_desc}</p>
                 </div>
@@ -70,13 +70,13 @@ export const DashboardOEE = () => {
                       </div>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
             )
-          })}
+          })} */}
       </div>
 
-      {showPainelOEE && <PainelOEE oeeSelected={oeeSelected} setShowPainelOEE={setShowPainelOEE}/>}
-    </div>
+{/*       {showPainelOEE && <PainelOEE oeeSelected={oeeSelected} setShowPainelOEE={setShowPainelOEE}/>}
+ */}    </div>
   )
 }
