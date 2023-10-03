@@ -26,7 +26,7 @@ function Home() {
             <Route path='/config' element={<Config />} />
             <Route path='/register' element={<Register />} />
           </Routes>
-        </div */}>
+        </div */}
       </BrowserRouter>}
     </div>
   );
