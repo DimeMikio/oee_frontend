@@ -47,7 +47,7 @@ export const DashboardOEE = () => {
 
             return (
               <div key={oeeValue.id} className='oee-single' onClick={() => handleSelectOee(oeeValue)}>
-                <div className='equipment-name'>
+                {/* <div className='equipment-name'>
                   <h2>{oeeValue.equip_name}</h2>
                   <p>{oeeValue.equip_desc}</p>
                 </div>
@@ -70,7 +70,7 @@ export const DashboardOEE = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             )
           })}
