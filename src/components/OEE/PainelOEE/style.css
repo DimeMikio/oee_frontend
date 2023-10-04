@@ -14,6 +14,7 @@
 .painel-oee-bkg {
   background-color: rgb(87,87,87);
   height: 90%;
+  max-height: 600px;
   width: 350px;
   padding: 10px 10px;
 }
@@ -105,6 +106,6 @@ table {
 }
 
 .oee-buttons {
-  padding: 5px 0px;
+  margin-top: 10px;
   text-align: right;
 }
