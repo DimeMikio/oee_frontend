@@ -6,6 +6,7 @@
   width: 200px;
   color: var(--font-gray-2);
   transition: 1s;
+  overflow: hidden;
 }
 
 .hide-menu{
