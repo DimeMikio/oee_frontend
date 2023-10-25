@@ -1,159 +1,166 @@
 import './style.css';
 
-import React, { useRef, useEffect } from 'react';
-
+import React, { useRef, useEffect, useMemo } from 'react';
 import Chart from 'chart.js/auto';
 
 export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
   const oee = oeeSelected.oeeValue;
 
-  let chartOEE;
-  let chartAvail;
-  let chartEff;
-  let chartQual;
-
-  const IndexOEE = ({ percent }) => {
+  // here are index components 
+  const IndexOEE = ({ index, percent }) => {
     const canvasRef = useRef(null);
 
+    let chartAvail;
+    let chartEff;
+    let chartQual;
+    let chartOEE;
+    let colorIndex;
+
+    if (percent < 65) {
+      colorIndex = 'rgb(250, 69, 63)';
+    } else if(percent >= 65 && percent < 85) {
+      colorIndex = 'rgb(250, 206, 63)';
+    } else if(percent >= 85) {
+      colorIndex = 'rgb(132, 247, 132)';
+    }    
+    
+    // canva configuration
+    const type = 'doughnut';
+
+    const data = {
+      datasets: [
+        {
+          data: [percent, 100 - percent],
+          backgroundColor: [colorIndex, 'transparent'],
+          borderWidth: 0,
+          hoverOffset: 1,
+        },
+      ],
+    };
+
+    const options = {
+      cutout: index === 'oee' ? 20 :12,
+      rotation: -125,
+      circumference: 250,
+      tooltips: { enabled: true },
+      hover: { mode: null },
+    }
+    
     useEffect(() => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d');
 
-      chartOEE && chartOEE.destroy();
-      
-      chartOEE = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          datasets: [
-            {
-              data: [percent, 100 - percent],
-              backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
-              borderWidth: 0,
-              hoverOffset: 1,
-            },
-          ],
-        },
-        options: {
-          cutout: 20,
-          rotation: -125,
-          circumference: 250,
-          tooltips: { enabled: true },
-          hover: { mode: null },
-        }
-      });
+      ctx.clearRect(0,0,canvas.width, canvas.height);
 
-    }, [percent]);
+      if (index === 'oee') {
+        chartOEE && chartOEE.destroy();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        chartOEE = new Chart(ctx, { type, data, options });
+      } else if (index === 'avail') {
+        chartAvail && chartAvail.destroy();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        chartAvail = new Chart(ctx, { type, data, options });
+      } else if (index === 'eff') {
+        chartEff && chartEff.destroy();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        chartEff = new Chart(ctx, { type, data, options });
+      } else if (index === 'qual') {
+        chartQual && chartQual.destroy();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        chartQual = new Chart(ctx, { type, data, options });
+      };
 
+    }, [index, percent, colorIndex, chartOEE]);
 
     return <canvas ref={canvasRef} />;
   }
 
-  const IndexAvail = ({ percent }) => {
-    const canvasRef = useRef(null);
-
-    useEffect(() => {
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext('2d');
-
-      chartAvail && chartAvail.destroy();
-      
-      chartAvail = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          datasets: [
-            {
-              data: [percent, 100 - percent],
-              backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
-              borderWidth: 0,
-              hoverOffset: 1,
-            },
-          ],
-        },
-        options: {
-          cutout: 12,
-          rotation: -135,
-          circumference: 270,
-          tooltips: { enabled: true },
-          hover: { mode: null },
-        }
-      });
-
-    }, [percent]);
-
-
-    return <canvas ref={canvasRef} />;
+  // functions
+  // check if the goal are OK or NOK
+  function checkGoal(product) {
+    if (product.status) {
+      if (product.goal > product.prod_real) { 
+        return 'color-red'
+      } else {
+        return 'color-green'
+      }
+    } else {
+      return ''
+    }
+    
   }
 
-  const IndexEff = ({ percent }) => {
-    const canvasRef = useRef(null);
-
-    useEffect(() => {
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext('2d');
-
-      chartEff && chartEff.destroy();
-      
-      chartEff = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          datasets: [
-            {
-              data: [percent, 100 - percent],
-              backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
-              borderWidth: 0,
-              hoverOffset: 1,
-            },
-          ],
-        },
-        options: {
-          cutout: 12,
-          rotation: -135,
-          circumference: 270,
-          tooltips: { enabled: true },
-          hover: { mode: null },
-        },
-      });
-
-    }, [percent]);
-
-
-    return <canvas ref={canvasRef} />;
+  // check if the equipment are producing, maintenance or stopped
+  function checkEquip() {
+    if (oee.status === 'produzindo') {
+      return 'status-production color-green';
+    } else if (oee.status === 'manutenção') {
+      return 'status-production color-gray';
+    } else {
+      return 'status-production color-red';
+    }
   }
 
-  const IndexQual = ({ percent }) => {
-    const canvasRef = useRef(null);
+  // here are the components that depend on the equipment status
+  // producing
+  const EquipProducing = () => {
+    return (
+      <div>
+        <div className='operator-id'>
+          <p>Operador: <span>{oee.operator}</span></p>
+        </div>
 
-    useEffect(() => {
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext('2d');
+        <div className='list-product'>
+          <table>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Descrição</th>
+                  <th>Op</th>
+                  <th>Meta</th>
+                  <th>Real</th>
+                </tr>
+              </thead>
 
-      chartQual && chartQual.destroy();
-      
-      chartQual = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          datasets: [
-            {
-              data: [percent, 100 - percent],
-              backgroundColor: ['rgba(132, 247, 132, 0.5)', 'transparent'],
-              borderWidth: 0,
-              hoverOffset: 1,
-            },
-          ],
-        },
-        options: {
-          cutout: 12,
-          rotation: -135,
-          circumference: 270,
-          tooltips: { enabled: true },
-          hover: { mode: null },
-        },
-      });
+            <tbody>
+              {oee.products.map((product) => {
+                return (
+                  <tr key={product.id} className={ checkGoal(product) }>
+                    <td>{product.number}</td>
+                    <td>{product.descrip}</td>
+                    <td>{product.operation}</td>
+                    <td>{product.goal}</td>
+                    <td>{product.prod_real}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )
+  }
 
-    }, [percent]);
+  // maintenance
+  const EquipMaintenance = () => {
+    return (
+      <div>
+        <div>
+          <p>Técnico: <span>{'João Paulo'}</span></p>
+          <p>Hora Início: <span>{'09:03 hrs'}</span></p>
+          <p>Tempo Manutenção: <span>{'02:12 hrs'}</span></p>
+        </div>
+      </div>
+    )
+  }
 
+  // stoped
+  const EquipStoped = () => {
+    return (
+      <div>
 
-    return <canvas ref={canvasRef} />;
+      </div>
+    )
   }
 
   return (
@@ -172,7 +179,7 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
 
             <div className='oee-mainindex'>
               <div className='oee-index-70'>
-                <IndexOEE percent={oee.oee} />
+                <IndexOEE index={'oee'} percent={oee.oee} />
               </div>
               <div className='oee-index-text'>
                 <div>{oee.oee}%</div>
@@ -183,7 +190,7 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
             <div className='oee-subindex'>
               <div className='oee-subindex-container'>
                 <div className='oee-index-50'>
-                  <IndexAvail percent={oee.avail} />
+                  <IndexOEE index={'avail'} percent={oee.avail} />
                 </div>
                 <div>{oee.avail}%</div>
                 <div>Disponibilidade</div>
@@ -191,7 +198,7 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
 
               <div className='oee-subindex-container'>
                 <div className='oee-index-50'>
-                  <IndexEff percent={oee.eff} />
+                  <IndexOEE index={'eff'} percent={oee.eff} />
                 </div>
                 <div>{oee.eff}%</div>
                 <div>Eficiência</div>
@@ -199,7 +206,7 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
 
               <div className='oee-subindex-container'>
                   <div className='oee-index-50'>
-                    <IndexQual percent={oee.qual} />
+                    <IndexOEE index={'qual'} percent={oee.qual} />
                   </div>
                   <div>{oee.qual}%</div>
                   <div>Qualidade</div>
@@ -209,90 +216,21 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
           </div>
 
           <div className='oee-info-container'>
-
-            <div className='status-production'>
+            <div className={checkEquip()}>
               {oee.status}
             </div>
 
-            <div className='operator-id'>
-              <p>Operador: <span>{oee.operator}</span></p>
-            </div>
+            {oee.status === 'produzindo' && <EquipProducing />}
+            {oee.status === 'manutenção' && <EquipMaintenance />}
+            {/*oee.status === 'parado' && <EquipStoped />} */}
+          </div>
 
-            <div className='list-product'>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Status</th>
-                    <th>Código</th>
-                    <th>Descrição</th>
-                    <th>Op</th>
-                    <th>Meta</th>
-                    <th>Real</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr style={{background: "rgb(82,184,72)"}}>
-                    <td>OK</td>
-                    <td>111.111.111</td>
-                    <td>Polia</td>
-                    <td>20</td>
-                    <td>15</td>
-                    <td>15</td>
-                  </tr>
-                  <tr style={{background: "rgb(82,184,72)"}}>
-                    <td>OK</td>
-                    <td>222.222.222</td>
-                    <td>Polia</td>
-                    <td>20</td>
-                    <td>15</td>
-                    <td>15</td>
-                  </tr>
-                  <tr>
-                    <td>P</td>
-                    <td>123.456.789</td>
-                    <td>Polia</td>
-                    <td>20</td>
-                    <td>15</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>P</td>
-                    <td>123.456.789</td>
-                    <td>Polia</td>
-                    <td>20</td>
-                    <td>15</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>P</td>
-                    <td>123.456.789</td>
-                    <td>Polia</td>
-                    <td>20</td>
-                    <td>15</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>P</td>
-                    <td>123.456.789</td>
-                    <td>Polia</td>
-                    <td>20</td>
-                    <td>15</td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div className='oee-buttons'>
-              <button className='btn btn-gray' onClick={() => setShowPainelOEE(false)}>Fechar</button>
-            </div>
-
+          <div className='oee-buttons'>
+            <button className='btn btn-gray' onClick={() => setShowPainelOEE(false)}>Fechar</button>
           </div>
         </div>
 
       </div>
     </div>
   );
-
 }
