@@ -1,6 +1,6 @@
 import './style.css';
 
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 
 export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
@@ -93,16 +93,16 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
   // check if the equipment are producing, maintenance or stopped
   function checkEquip() {
     if (oee.status === 'produzindo') {
-      return 'status-production color-green';
+      return 'color-green';
     } else if (oee.status === 'manutenção') {
-      return 'status-production color-gray';
+      return 'color-gray';
     } else {
-      return 'status-production color-red';
+      return 'color-red';
     }
   }
 
   // here are the components that depend on the equipment status
-  // producing
+  // component production
   const EquipProducing = () => {
     return (
       <div>
@@ -141,11 +141,11 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
     )
   }
 
-  // maintenance
+  // component maintenance
   const EquipMaintenance = () => {
     return (
       <div>
-        <div>
+        <div className='maintenance-container'>
           <p>Técnico: <span>{'João Paulo'}</span></p>
           <p>Hora Início: <span>{'09:03 hrs'}</span></p>
           <p>Tempo Manutenção: <span>{'02:12 hrs'}</span></p>
@@ -154,11 +154,15 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
     )
   }
 
-  // stoped
-  const EquipStoped = () => {
+  // component stopped
+  const EquipStopped = () => {
     return (
       <div>
-
+        <div className='stopped-container'>
+          <p>Motivo Parada: <span>{'Preparação da Máquina'}</span></p>
+          <p>Hora Início: <span>{'09:03 hrs'}</span></p>
+          <p>Tempo Manutenção: <span>{'02:12 hrs'}</span></p>
+        </div>
       </div>
     )
   }
@@ -216,13 +220,13 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
           </div>
 
           <div className='oee-info-container'>
-            <div className={checkEquip()}>
+            <div className={`status-production ${checkEquip()}`}>
               {oee.status}
             </div>
 
             {oee.status === 'produzindo' && <EquipProducing />}
             {oee.status === 'manutenção' && <EquipMaintenance />}
-            {/*oee.status === 'parado' && <EquipStoped />} */}
+            {oee.status === 'parado' && <EquipStopped />}
           </div>
 
           <div className='oee-buttons'>

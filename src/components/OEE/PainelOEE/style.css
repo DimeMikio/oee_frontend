@@ -110,6 +110,16 @@ table {
   width: 100%;
 }
 
+.maintenance-container {
+  padding: 10px;
+  height: 170px;
+}
+
+.stopped-container {
+  padding: 10px;
+  height: 170px;
+}
+
 .oee-buttons {
   margin-top: 10px;
   text-align: right;
@@ -120,7 +130,7 @@ table {
 }
 
 .color-red {
-  background-color: rgb(184, 72, 72);
+  background-color: rgb(252, 47, 47);
 }
 
 .color-gray {
