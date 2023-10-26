@@ -91,13 +91,23 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
   }
 
   // check if the equipment are producing, maintenance or stopped
-  function checkEquip() {
-    if (oee.status === 'produzindo') {
-      return 'color-green';
-    } else if (oee.status === 'manutenção') {
-      return 'color-gray';
-    } else {
-      return 'color-red';
+  function checkEquip(opc) {
+    if (opc === 'band') {
+      if (oee.status === 'produzindo') {
+        return 'color-green';
+      } else if (oee.status === 'manutenção') {
+        return 'color-gray';
+      } else {
+        return 'color-red';
+      }
+    } else if (opc === 'bkg') {
+      if (oee.status === 'produzindo') {
+        return 'color-green-dark';
+      } else if (oee.status === 'manutenção') {
+        return 'color-gray-dark';
+      } else {
+        return 'color-red-dark';
+      }
     }
   }
 
@@ -169,8 +179,8 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
 
   return (
     <div className='painel-oee'>
-
-      <div className='painel-oee-bkg'>
+      
+      <div className={`painel-oee-bkg ${checkEquip('bkg')}`}>
 
         <div className='painel-oee-container'>
 
@@ -220,7 +230,7 @@ export const PainelOEE = ({ oeeSelected, setShowPainelOEE }) => {
           </div>
 
           <div className='oee-info-container'>
-            <div className={`status-production ${checkEquip()}`}>
+            <div className={`status-production ${checkEquip('band')}`}>
               {oee.status}
             </div>
 

@@ -12,7 +12,6 @@
 }
 
 .painel-oee-bkg {
-  background-color: rgb(87,87,87);
   height: 90%;
   max-height: 600px;
   width: 350px;
@@ -129,10 +128,22 @@ table {
   background-color: rgb(82,184,72);
 }
 
+.color-green-dark {
+  background-color: rgb(21, 117, 13);
+}
+
 .color-red {
   background-color: rgb(252, 47, 47);
 }
 
+.color-red-dark {
+  background-color: rgb(141, 17, 17);
+}
+
 .color-gray {
   background-color: rgb(177, 177, 177);
+}
+
+.color-gray-dark {
+  background-color: rgb(99, 99, 99);
 }
