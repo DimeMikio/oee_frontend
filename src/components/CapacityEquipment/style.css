@@ -1,0 +1,37 @@
+.list-product-container {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.8);
+  padding: 5px;
+}
+
+.list-product-header {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.list-product-header-equip {
+  flex: 1;
+}
+
+.list-product-header-buttons {
+  width: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.list-product-body {
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+table {
+  text-align: center;
+}
+
+tbody {
+  font-size: 12px;
+}

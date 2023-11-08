@@ -1,6 +1,6 @@
 import './style.css';
 
-import { faCircleXmark, faGaugeHigh, faGears, faList, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faGaugeHigh, faGears, faList, faPenToSquare, faGamepad, faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -60,8 +60,12 @@ export const Menu = () => {
           <Link to='/' style={{textDecoration:'none', color:'rgb(200,200,200)'}}><li className={itenSelect === 1 ? 'li-active' : 'li-disabled'} onClick={() => handleSelectMenu(1)}><span><FontAwesomeIcon icon={faGaugeHigh} /></span><p>Dashboard</p></li></Link>
 
           <Link to='/register' style={{textDecoration:'none', color:'rgb(200,200,200)'}}><li className={itenSelect === 2 ? 'li-active' : 'li-disabled'} onClick={() => handleSelectMenu(2)}><span><FontAwesomeIcon icon={faPenToSquare} /></span><p>Cadastro</p></li></Link>
+          
+          <Link to='/capacity-equipment' style={{textDecoration:'none', color:'rgb(200,200,200)'}}><li className={itenSelect === 3 ? 'li-active' : 'li-disabled'} onClick={() => handleSelectMenu(3)}><span><FontAwesomeIcon icon={faNetworkWired} /></span><p>Cadastro</p></li></Link>
+          
+          <Link to='/' style={{textDecoration:'none', color:'rgb(200,200,200)'}}><li className={itenSelect === 4 ? 'li-active' : 'li-disabled'} onClick={() => handleSelectMenu(4)}><span><FontAwesomeIcon icon={faGamepad} /></span><p>Cadastro</p></li></Link>
 
-          <Link to='/config' style={{textDecoration:'none', color:'rgb(200,200,200)'}}><li className={itenSelect === 3 ? 'li-active' : 'li-disabled'} onClick={() => handleSelectMenu(3)}><span style={{marginRight: '12px'}}><FontAwesomeIcon icon={faGears} /></span><p>Configurações</p></li></Link>
+          <Link to='/config' style={{textDecoration:'none', color:'rgb(200,200,200)'}}><li className={itenSelect === 5 ? 'li-active' : 'li-disabled'} onClick={() => handleSelectMenu(5)}><span style={{marginRight: '12px'}}><FontAwesomeIcon icon={faGears} /></span><p>Configurações</p></li></Link>
         </ul>
       </div>
 

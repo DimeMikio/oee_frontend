@@ -17,11 +17,11 @@ export const DashboardOEE = () => {
 
   return (
     <div className='dashboard-container'>
-      <div className='header-dashboard'>
+      <div className='header-container'>
         <p>Dashboard - O.E.E</p>
       </div>
 
-      <div className='body-dashboard'>
+      <div className='body-container'>
           {oeeValues.map((oeeValue) => {
             var colorBkg;
             switch (oeeValue.status) {
@@ -39,7 +39,7 @@ export const DashboardOEE = () => {
             }
 
             return (
-              <div key={oeeValue.id} className='oee-single' onDoubleClick={() => handleSelectOee(oeeValue)}>
+              <div key={oeeValue.id} className='oee-single' onClick={() => handleSelectOee(oeeValue)}>
                 <div className='equipment-name'>
                   <h2>{oeeValue.equip_name}</h2>
                   <p>{oeeValue.equip_desc}</p>

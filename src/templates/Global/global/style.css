@@ -38,3 +38,17 @@ body {
   font-family: 'Roboto-bold';
   src: url('../../../assets/fonts/RobotoCondensed-Bold.ttf');
 }
+
+.header-container {
+  font-family: 'Roboto-regular';
+  color: var(--blue-dark-1);
+  font-size: 25px;
+  background-color: var(--gray-light-1);
+  padding: 10px;
+}
+
+.body-container{
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 250px);
+}

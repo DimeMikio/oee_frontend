@@ -1,17 +1,3 @@
-.header-dashboard {
-  font-family: 'Roboto-regular';
-  color: var(--blue-dark-1);
-  font-size: 25px;
-  background-color: var(--gray-light-1);
-  padding: 10px;
-}
-
-.body-dashboard {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, 250px);
-}
-
 .oee-single {
   margin-top: 15px;
   cursor: pointer;
