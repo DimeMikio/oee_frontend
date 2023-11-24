@@ -1,0 +1,17 @@
+.inputcontrol-container {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputcontrol-bkg {
+  width: 400px;
+  height: 800px;
+  background-color: #575757;
+}

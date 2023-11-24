@@ -63,7 +63,7 @@ export const Menu = () => {
           
           <Link to='/capacity-equipment' style={{textDecoration:'none', color:'rgb(200,200,200)'}}><li className={itenSelect === 3 ? 'li-active' : 'li-disabled'} onClick={() => handleSelectMenu(3)}><span><FontAwesomeIcon icon={faNetworkWired} /></span><p>Cadastro</p></li></Link>
           
-          <Link to='/' style={{textDecoration:'none', color:'rgb(200,200,200)'}}><li className={itenSelect === 4 ? 'li-active' : 'li-disabled'} onClick={() => handleSelectMenu(4)}><span><FontAwesomeIcon icon={faGamepad} /></span><p>Cadastro</p></li></Link>
+          <Link to='/input-control' style={{textDecoration:'none', color:'rgb(200,200,200)'}}><li className={itenSelect === 4 ? 'li-active' : 'li-disabled'} onClick={() => handleSelectMenu(4)}><span><FontAwesomeIcon icon={faGamepad} /></span><p>Cadastro</p></li></Link>
 
           <Link to='/config' style={{textDecoration:'none', color:'rgb(200,200,200)'}}><li className={itenSelect === 5 ? 'li-active' : 'li-disabled'} onClick={() => handleSelectMenu(5)}><span style={{marginRight: '12px'}}><FontAwesomeIcon icon={faGears} /></span><p>Configurações</p></li></Link>
         </ul>

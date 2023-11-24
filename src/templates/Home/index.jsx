@@ -12,6 +12,7 @@ import { DashboardOEE } from '../../components/OEE';
 import { Config } from '../../components/Config';
 import { Register } from '../../components/Register';
 import { CapacityEquipment } from '../../components/CapacityEquipment';
+import { InputControl } from '../../components/InputControl';
 
 
 function Home() {
@@ -27,6 +28,7 @@ function Home() {
             <Route path='/config' element={<Config />} />
             <Route path='/register' element={<Register />} />
             <Route path='/capacity-equipment' element={<CapacityEquipment />} />
+            <Route path='/input-control' element={<InputControl />} />
           </Routes>
         </div>
       </BrowserRouter>
