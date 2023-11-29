@@ -5,13 +5,16 @@
   left: 0;
   bottom: 0;
   right: 0;
+  min-height: 600px;
+  min-width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .inputcontrol-bkg {
-  width: 400px;
-  height: 800px;
+  height: 90%;
+  width: 90%;
+  max-width: 500px;
   background-color: #575757;
 }
