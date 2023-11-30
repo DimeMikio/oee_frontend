@@ -1,3 +1,10 @@
+/* colors default */
+:root {
+  --grn-light:#26FF13;
+  --ylw-light:#FFCB14;
+  --red-light:#FF1010;
+}
+
 .inputcontrol-container {
   background-color: black;
   position: absolute;
@@ -17,4 +24,116 @@
   width: 90%;
   max-width: 500px;
   background-color: #575757;
+  padding: 10px;
+}
+
+.inputcontrol-painel {
+  width: 100%;
+  height: 100%;
+  background-color: #252525;
+  padding: 10px;
+}
+
+.inputcontrol-header {
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #575757;
+}
+
+.header-identy {
+  font-size: 35px;
+}
+
+.header-equip {
+  font-size: 14px;
+}
+
+.inputcontrol-index {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-bottom: 1px solid #575757;
+}
+
+.index-oee {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.index-oee-circle {
+  height: 70px;
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.index-value-oee {
+  font-size: 22px;
+}
+
+.index-value-type{
+  font-size: 13px;
+  color: #D9D9D9;
+}
+
+.index-others {
+  display: flex;
+  flex-direction: row;
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+.index-sub{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.index-sub p:nth-child(1) {
+  font-size: 20px;
+}
+
+.index-sub p:nth-child(2) {
+  font-size: 13px;
+  color: #D9D9D9;
+}
+
+
+/* selecting colors */
+/* circle */
+.circle-grn {
+  border: 4px solid var(--grn-light);
+}
+
+.circle-ylw {
+  border: 4px solid var(--ylw-light);
+}
+
+.circle-red {
+  border: 4px solid var(--red-light);
+}
+
+/* font */
+.font-grn {
+  color: var(--grn-light);
+}
+
+.font-ylw {
+  color: var(--ylw-light);
+}
+
+.font-red {
+  color: var(--red-light);
 }
