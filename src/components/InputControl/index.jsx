@@ -2,13 +2,13 @@ import './style.css';
 
 export const InputControl = () => {
 
-  const OptionsProduct = () => {
+  /* const OptionsProduct = () => {
     return (
       <div>
 
       </div>
     )
-  }
+  } */
 
   return (
     <div className='inputcontrol-container'>
