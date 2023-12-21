@@ -49,6 +49,56 @@ export const InputControl = () => {
             </div>
           </div>
 
+          <div className='inputcontrol-products'>
+            <table>
+              <thead>
+                <tr>
+                  <th>produção</th>
+                  <th>meta</th>
+                  <th>real</th>
+                  <th>aprovado</th>
+                  <th>reprovado</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td className='prod_inputctrl'><p>836.733.025</p><p>10/20</p></td>
+                  <td className='goal_inputctrl'>69</td>
+                  <td className='real_inputctrl font-grn'>68</td>
+                  <td><button className='btn_ok'>OK</button></td>
+                  <td><button className='btn_nok'>NOK</button></td>
+                </tr>
+                <tr>
+                  <td className='prod_inputctrl'><p>836.733.025</p><p>10/20</p></td>
+                  <td className='goal_inputctrl'>69</td>
+                  <td className='real_inputctrl font-grn'>68</td>
+                  <td><button className='btn_ok'>OK</button></td>
+                  <td><button className='btn_nok'>NOK</button></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div className='btn_inputctrl'>
+              <button className='btn_add_prod'>+</button>
+            </div>
+          </div>
+
+          <div className='inputcontrol_stops'>
+            <div className='header_stops_inputctrl'>paradas</div>
+
+            <div className='container_stops_inputctrl'>
+              <button>troca de ferramenta</button>
+              <button>setup</button>
+              <button>correção / liberação</button>
+              <button>manutenção preventiva</button>
+              <button>manutenção corretiva</button>
+              <button>desenvolvimento</button>
+              <button>reunião</button>
+              <button>falta matéria prima</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
