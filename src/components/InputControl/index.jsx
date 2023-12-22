@@ -1,14 +1,36 @@
+import { useState } from 'react';
 import './style.css';
 
 export const InputControl = () => {
+  const [showOptProd, setShowOptProd] = useState(false)
+  const [showAddProd, setShowAddProd] = useState(false)
 
-  /* const OptionsProduct = () => {
+  //component and functions of OptionsProduct
+  //This block is called when the product is in production and you need stop or pause the production
+  const OptionsProduct = () => {
     return (
-      <div>
-
+      <div className='inputcontrol-container'>
+        <div className='optionProd-bkg'>
+          <button className='btn-gray'>parar produto</button>
+          <button className='btn-gray'>finalizar produto</button>
+          <button className='btn-nok' onClick={() => setShowOptProd(false)}>cancelar</button>
+        </div>
       </div>
     )
-  } */
+  }
+
+  //component and function of AddProduct
+  //Thus block is called when the you need to add a new product
+  const AddProduct = () => {
+    return (
+      <div className='inputcontrol-container'>
+        <div className='addProd-bkg'>
+          <button className='btn-gray'>começar produção</button>
+          <button className='btn-nok' onClick={() => setShowAddProd(false)}>cancelar</button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className='inputcontrol-container'>
@@ -72,18 +94,18 @@ export const InputControl = () => {
 
               <tbody>
                 <tr>
-                  <td className='prod_inputctrl'><p>836.733.025</p><p>10/20</p></td>
+                  <td className='prod_inputctrl' onClick={() => setShowOptProd(true)}><p>836.733.025</p><p>10/20</p></td>
                   <td className='goal_inputctrl'>69</td>
                   <td className='real_inputctrl font-grn'>68</td>
-                  <td><button className='btn_ok'>OK</button></td>
-                  <td><button className='btn_nok'>NOK</button></td>
+                  <td><button className='btn-inputctrl btn-ok'>OK</button></td>
+                  <td><button className='btn-inputctrl btn-nok'>NOK</button></td>
                 </tr>
                 <tr>
-                  <td className='prod_inputctrl'><p>836.733.025</p><p>10/20</p></td>
+                  <td className='prod_inputctrl' onClick={() => setShowAddProd(true)}><p>836.733.025</p><p>10/20</p></td>
                   <td className='goal_inputctrl'>69</td>
                   <td className='real_inputctrl font-grn'>68</td>
-                  <td><button className='btn_ok'>OK</button></td>
-                  <td><button className='btn_nok'>NOK</button></td>
+                  <td><button className='btn-inputctrl btn-ok'>OK</button></td>
+                  <td><button className='btn-inputctrl btn-nok'>NOK</button></td>
                 </tr>
               </tbody>
             </table>
@@ -107,6 +129,9 @@ export const InputControl = () => {
               <button>falta matéria prima</button>
             </div>
           </div>
+
+          { showOptProd && <OptionsProduct /> }
+          { showAddProd && <AddProduct /> }
 
         </div>
       </div>
